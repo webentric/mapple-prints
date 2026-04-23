@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import about_us from '../assets/images/about-img.png'
+import CEO from '../assets/images/CEO.jpeg'
 
 const DEFAULT_BADGE = {
     label: "Your Vision, Perfectly Packaged",
@@ -11,7 +11,7 @@ export default function About({
     body = "For over 15 years, Mapple Prints has been helping businesses stand out with custom packaging that sells. Based in Rai, Haryana, we offer end-to-end packaging solutions—from design and prototyping to printing and production—ensuring seamless execution and on-time delivery.We believe packaging is the first tangible connection between a brand and its customer. That’s why we combine innovation, precision, and reliability to deliver packaging that not only protects your product but also enhances its shelf appeal.",
     badge = DEFAULT_BADGE,
     cta = { label: "Read More About Us", href: "#about" },
-    imageSrc = about_us,
+    imageSrc = CEO,
     imageAlt = "Mapple Prints team reviewing packaging designs in a modern facility",
 }) {
     const sectionRef = useRef(null);

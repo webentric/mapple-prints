@@ -20,8 +20,8 @@ const INDUSTRIES = [
 ];
 
 const CONTACT = {
-    address: "Mapple Prints, Industrial Packaging Unit, Delhi, India",
-    phone: "+91 98765 43210",
+    address: "Plot No. 2173, HSIIDC Industrial Estate, Rai, Sonipat (Haryana), India",
+    phone: "+91 9810152101, 9212540800",
     email: "info@mappleprints.com",
     hours: "Mon-Sat: 9:00 AM - 6:00 PM",
 };
@@ -211,6 +211,9 @@ export default function Footer({
                     <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                         <p className="text-sm text-white/55">
                             © {year} {companyName}. All rights reserved.
+                        </p>
+                        <p className="text-sm text-white/55">
+                            Designed and Developed by <a href="webentric.in">WEBENTRIC</a>
                         </p>
                         <div className="flex flex-wrap items-center gap-4 text-sm text-white/55">
                             <a href="#privacy" className="transition-colors hover:text-[#f0a500]">Privacy Policy</a>
