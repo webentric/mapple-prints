@@ -28,7 +28,7 @@ const DEFAULT_SLIDES = [
 export default function HeroSection({
     eyebrow = "Industrial Excellence",
     heading = "Custom Packaging Solutions That Sell Your Product",
-    body = "Partner with a trusted manufacturing leader. We deliver high-volume, precision packaging for FMCG, Pharma, and Global Brands with unwavering reliability.",
+    body = "Mapple Prints delivers high-quality mono cartons and paper-based packaging solutions designed for performance and visual impact. With end-to-end capabilities—from printing to finishing—we ensure precision, consistency, and reliable delivery for brands across industries.",
     primaryCta = { label: "Request a Quote", href: "#quote" },
     secondaryCta = { label: "View Infrastructure", href: "#infrastructure" },
     slides = DEFAULT_SLIDES,
@@ -90,7 +90,8 @@ export default function HeroSection({
                 <div className="absolute inset-0" style={{
                     background: "linear-gradient(to right, white 40%, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0) 100%)",
                 }} />
-                <div className="mx-auto flex w-full max-w-[1400px] h-auto md:h-screen  flex-col items-center gap-8 px-4 py-20 md:flex-row md:gap-12 md:px-6 md:py-20 lg:px-8 lg:py-24 " >
+
+                <div className="mx-auto flex w-full max-w-[1400px] h-auto md:h-screen flex-col items-center gap-8 px-4 py-30 md:flex-row md:gap-12 md:px-6 md:py-20 lg:px-8 lg:py-24 " >
 
                     {/* ── Left: Copy ── */}
                     <div className="relative z-20 flex w-full flex-col md:w-1/2 lg:w-[52%]">
@@ -113,9 +114,9 @@ export default function HeroSection({
                         <p
                             className="mb-8 text-[#374151]"
                             style={{
-                                fontSize: "clamp(0.95rem, 1.6vw, 1.1rem)",
+                                fontSize: "xs",
                                 maxWidth: "48ch",
-                                lineHeight: "1.75",
+                                lineHeight: "1.50",
                             }}
                         >
                             {body}
