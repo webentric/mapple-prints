@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import agarbatti from '../assets/images/agarbatti-package.jpg'
-import ayurvedic from '../assets/images/ayurvedic-package.jpg'
-import cosmetics from '../assets/images/cosmetics-package.jpg'
-import electronics from '../assets/images/electronics-package.jpg'
-import fmcg from '../assets/images/fmcg-package.jpg'
-import food from '../assets/images/food-package.jpg'
-import medicine from '../assets/images/medicine-package.jpg'
+import ayurvedic from '../assets/images/Products/ayurvedic-1.png'
+import cosmetics from '../assets/images/Products/cosmetic-1.png'
+import electronics from '../assets/images/Products/electric-1.png'
+import food from '../assets/images/Products/food-1.png'
+import medicine from '../assets/images/Products/pharma-1.png'
 
 const INDUSTRIES = [
     {
@@ -16,14 +15,6 @@ const INDUSTRIES = [
         href: "#pharma",
         featured: true,
         image: medicine,
-    },
-    {
-        id: "fmcg",
-        title: "FMCG",
-        desc: "High-volume packaging for fast-moving goods",
-        icon: <FmcgIcon />,
-        href: "#fmcg",
-        image: fmcg,
     },
     {
         id: "cosmetics",

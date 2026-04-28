@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import industry from '../assets/images/industry.png'
+import industry from '../assets/images/Machines/machine-1.jpeg'
 
 const HIGHLIGHTS = [
     {

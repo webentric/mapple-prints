@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
-import box_1 from '../assets/images/box-type-1.jpg'
-import box_2 from '../assets/images/box-type-2.jpg'
-import box_3 from '../assets/images/box-type-3.jpg'
-import box_4 from '../assets/images/box-type-4.jpg'
+import box_1 from '../assets/images/Products/cosmetic-2.png'
+import box_2 from '../assets/images/Products/electric-1.png'
+import box_3 from '../assets/images/Products/pharma-2.png'
+import box_4 from '../assets/images/Products/food-1.png'
 import hero_bg from '../assets/images/hero-bg.jpg'
 
 const DEFAULT_SLIDES = [
     {
         src: box_1,
-        alt: "Stack of custom packaging boxes manufactured by Mapple Prints",
+        alt: "Stack of custom packaging boxes manufactured by Maple Prints",
     },
     {
         src: box_2,
@@ -26,9 +26,9 @@ const DEFAULT_SLIDES = [
 ];
 
 export default function HeroSection({
-    eyebrow = "Industrial Excellence",
-    heading = "Custom Packaging Solutions That Sell Your Product",
-    body = "Mapple Prints delivers high-quality mono cartons and paper-based packaging solutions designed for performance and visual impact. With end-to-end capabilities—from printing to finishing—we ensure precision, consistency, and reliable delivery for brands across industries.",
+    eyebrow = "Custom Packaging Solutions That Sell Your Product",
+    heading = "Manufacturing Excellence",
+    body = "Maple Prints delivers high-quality mono cartons and paper-based packaging solutions designed for performance and visual impact. With end-to-end capabilities—from printing to finishing—we ensure precision, consistency, and reliable delivery for brands across industries.",
     primaryCta = { label: "Request a Quote", href: "#quote" },
     secondaryCta = { label: "View Infrastructure", href: "#infrastructure" },
     slides = DEFAULT_SLIDES,

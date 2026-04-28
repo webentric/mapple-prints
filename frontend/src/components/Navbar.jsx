@@ -62,10 +62,10 @@ export default function Navbar() {
                     className="flex items-center gap-2.5 outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                     aria-label="Mapple Prints – home"
                 >
-                    <img src={logo} alt="" className="w-9 md:w-11" />
+                    <img src={logo} alt="" className="w-11 md:w-13" />
 
-                    <span className="text-xl md:text-2xl font-bold tracking-tight text-white">
-                        MAPPLE <span className="text-[#E09A00]">PRINTS</span>
+                    <span className="text-3xl md:text-4xl font-bold tracking-tight text-white">
+                        MAPLE <span className="text-[#E09A00]">PRINTS</span>
                     </span>
                 </a>
 
@@ -76,7 +76,7 @@ export default function Navbar() {
                             <NavLink
                                 to={href}
                                 className={({ isActive }) =>
-                                    `text-[13px] font-semibold uppercase tracking-[0.06em] transition-colors duration-200 ${isActive
+                                    `text-[14px] font-semibold uppercase tracking-[0.06em] transition-colors duration-200 ${isActive
                                         ? "text-[#E09A00] decoration-4 underline underline-offset-22"
                                         : "text-white/80 hover:text-[#E09A00]"
                                     }`

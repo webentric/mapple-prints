@@ -1,227 +1,124 @@
 import React from "react";
-import hero_img from '../assets/images/service-page-hero.png'
-import {
-    Package,
-    Tag,
-    Monitor,
-    Wrench,
-    CheckCircle2,
-    ArrowRight,
-    User,
-    Cpu,
-    BarChart2,
-} from "lucide-react";
+import metallic from '../assets/images/Products/pharma-4.png'
+import embossed from '../assets/images/Products/ayurvedic-3.png'
+import glossed from '../assets/images/Products/ayurvedic-4.png'
+import uvCoating from '../assets/images/Products/ayurvedic-2.png'
+import silver from '../assets/images/Products/cosmetic-2.png'
 
-import carton_box from '../assets/images/carton-boxes.png'
-import transport_box from '../assets/images/transport-box.png'
+const services = [
+    {
+        title: "Embossing & Debossing",
+        description:
+            "We create raised or pressed impressions on paper surfaces to add depth and texture. This enhances brand elements with a tactile presence that leaves a lasting impression.",
+        image: embossed,
+    },
+    {
+        title: "Gloss & Matte Lamination",
+        description:
+            "A protective layer that enhances durability and elevates visual appeal. Gloss adds a vivid shine, while matte creates a refined, soft finish.",
+        image: glossed,
+    },
+    {
+        title: "Spot UV Coating",
+        description:
+            "Selective high-gloss coating applied precisely to highlight specific design areas, creating striking contrast against matte or uncoated surfaces.",
+        image: uvCoating,
+    },
+    {
+        title: "Gold & Silver Foil Stamping",
+        description:
+            "Metallic foil applied using heat and pressure to deliver a premium reflective finish — ideal for logos, titles, and brand marks.",
+        image: silver,
+    },
+    {
+        title: "Metallic Printing",
+        description:
+            "Special metallic inks produce a subtle shimmer across the printed surface, perfect for modern, high-end, and creative design applications.",
+        image: metallic,
+    },
+];
 
-
-const ServicesPage = () => {
+export default function ServicesPage() {
     return (
-        <>
-            <section className="bg-gray-50 py-20 px-6 md:px-16 lg:px-24">
-                <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+        <main className="font-sans text-[#0d2137]">
 
-                    {/* Left Content */}
-                    <div className="flex-1 flex flex-col justify-center space-y-5">
-                        {/* Accent Line */}
-                        <div className="w-12 h-1 bg-[#E09A00] rounded-full"></div>
+            {/* ─── HERO SECTION ─────────────────────────────────── */}
+            <section className="bg-[#f5f5f5] py-[90px]">
+                <div className="max-w-[1200px] mx-auto px-10 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
 
-                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 leading-tight tracking-tight">
-                            Industrial Packaging <br className="hidden md:block" /> Solutions
-                        </h2>
-
-                        <p className="text-gray-500 text-base leading-relaxed max-w-sm">
-                            Precision-engineered manufacturing capabilities designed for FMCG
-                            leaders, pharmaceutical executives, and global manufacturers
-                            demanding uncompromising reliability.
+                    {/* Left: Text */}
+                    <div className="flex flex-col items-start">
+                        <h1 className="text-[42px] lg:text-[52px] font-bold leading-[1.15] tracking-tight text-[#0d2137]">
+                            Our Printing Services &amp; Finishes
+                        </h1>
+                        <p className="mt-5 text-[17px] leading-relaxed text-[#5f6b76] max-w-[480px]">
+                            High-quality printing enhanced with premium finishes—all managed
+                            in-house for precision, consistency, and impact. <br />
+                            At Maple Prints, every print product is engineered to deliver both
+                            visual appeal and tactile experience. We handle all advanced
+                            finishing processes in-house, ensuring strict quality control and
+                            flawless execution across every order.
                         </p>
-
-                        {/* CTA Button */}
-                        <div className="pt-2">
-                            <button className="inline-flex items-center gap-2 bg-[#E09A00] hover:scale-105 text-white text-sm font-medium px-6 py-3  transition-colors duration-200 shadow-sm">
-                                Learn More
-                                <svg
-                                    className="w-4 h-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth={2}
-                                    viewBox="0 0 24 24"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-
-                    {/* Right Image — Fixed Aspect Ratio */}
-                    <div className="flex-1 w-full">
-                        <div className="relative w-full aspect-[4/3]  overflow-hidden shadow-lg">
-                            <img
-                                src={hero_img}
-                                alt="Industrial Packaging Machine"
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
-                        </div>
+                        <a
+                            href="/contact"
+                            className="mt-8 inline-block px-7 py-3 bg-[#e8820c] hover:bg-[#c96e08] text-white text-[13px] font-semibold tracking-[1px] uppercase transition-colors duration-200"
+                        >
+                            GET A QUOTE
+                        </a>
                     </div>
 
                 </div>
             </section>
-            <section className="bg-gray-50 py-20 px-6 md:px-16 lg:px-24">
-                {/* Section Header */}
-                <div className="max-w-6xl mx-auto text-center mb-12">
-                    <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 tracking-tight mb-3">
-                        Core Capabilities
-                    </h2>
-                    <p className="text-gray-500 text-base max-w-xl mx-auto leading-relaxed">
-                        Comprehensive packaging manufacturing tailored for high-volume,
-                        critical infrastructure demands.
-                    </p>
-                </div>
 
-                {/* Grid Layout */}
-                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                    {/* Card 1 — Carton Boxes (with image) */}
-                    <div className="bg-white  border border-gray-200 shadow-sm overflow-hidden flex flex-col md:flex-row">
-                        {/* Text */}
-                        <div className="flex-1 p-6 flex flex-col justify-between">
-                            <div>
-                                <div className="flex items-center gap-2 mb-3">
-                                    <Package className="w-5 h-5 text-blue-600" />
-                                    <h3 className="text-lg font-bold text-gray-900">Carton Boxes</h3>
+            {/* ─── SERVICES LIST ────────────────────────────────── */}
+            <section className="bg-white py-[90px]">
+                <div className="max-w-[1200px] mx-auto px-10">
+                    {services.map((service, index) => {
+                        const isReverse = index % 2 !== 0;
+                        return (
+                            <div
+                                key={index}
+                                className={[
+                                    "grid grid-cols-1 lg:grid-cols-2 gap-14 items-center",
+                                    index !== services.length - 1 ? "mb-24" : "",
+                                ].join(" ")}
+                            >
+                                {/* Image */}
+                                <div className={isReverse ? "lg:order-2" : "lg:order-1"}>
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        className="w-full h-[360px] object-cover block"
+                                    />
                                 </div>
-                                <p className="text-gray-500 text-sm leading-relaxed mb-4">
-                                    High-speed precision folding cartons for FMCG and pharmaceutical
-                                    applications. Manufactured with structural integrity and automated
-                                    assembly in mind.
-                                </p>
-                                <p className="text-xs font-semibold text-blue-600 uppercase tracking-widest mb-2">
-                                    Industrial Uses
-                                </p>
-                                <ul className="space-y-1">
-                                    {[
-                                        "Pharmaceutical Blister Packs",
-                                        "Premium Cosmetics",
-                                        "Food Grade Retail Packaging",
-                                    ].map((item) => (
-                                        <li key={item} className="flex items-center gap-2 text-sm text-gray-600">
-                                            <CheckCircle2 className="w-4 h-4 text-blue-500 flex-shrink-0" />
-                                            {item}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                        {/* Fixed Aspect Ratio Image */}
-                        <div className="w-full md:w-48 lg:w-56 flex-shrink-0">
-                            <div className="relative w-full h-48 md:h-full">
-                                <img
-                                    src={carton_box}
-                                    alt="Carton Boxes"
-                                    className="absolute inset-0 w-full h-full object-cover"
-                                />
-                            </div>
-                        </div>
-                    </div>
 
-                    {/* Card 2 — Labels */}
-                    <div className="bg-white  border border-gray-200 shadow-sm p-6 flex flex-col justify-between">
-                        <div>
-                            <div className="flex items-center gap-2 mb-3">
-                                <Tag className="w-5 h-5 text-blue-600" />
-                                <h3 className="text-lg font-bold text-gray-900">Labels</h3>
-                            </div>
-                            <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                                Industrial-grade self-adhesive labels capable of withstanding extreme
-                                temperatures and logistical friction.
-                            </p>
-                        </div>
-                        <div>
-                            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-3">
-                                Specifications
-                            </p>
-                            <div className="flex flex-wrap gap-2">
-                                {["UV Coating", "Tamper Evident", "Thermal Transfer"].map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className="text-xs text-gray-700 bg-gray-100 border border-gray-200  px-3 py-1.5 font-medium"
-                                    >
-                                        {tag}
+                                {/* Text Content */}
+                                <div className={[
+                                    "flex flex-col",
+                                    isReverse ? "lg:order-1" : "lg:order-2",
+                                ].join(" ")}>
+                                    <span className="text-[11px] font-semibold tracking-[2px] uppercase text-[#b0bac2] mb-3">
+                                        {String(index + 1).padStart(2, "0")}
                                     </span>
-                                ))}
+                                    <h3 className="text-[26px] font-bold leading-snug text-[#0d2137] mb-4">
+                                        {service.title}
+                                    </h3>
+                                    <p className="text-[16px] leading-[1.75] text-[#5f6b76] mb-6">
+                                        {service.description}
+                                    </p>
+                                    <a
+                                        href="/contact"
+                                        className="text-[14px] font-semibold text-[#0d2137] w-fit border-b border-transparent hover:border-[#e8820c] hover:text-[#e8820c] pb-[2px] transition-all duration-200"
+                                    >
+                                        Get Quote &rarr;
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    {/* Card 3 — Corrugated Boxes (with image) */}
-                    <div className="bg-white  border border-gray-200 shadow-sm overflow-hidden flex flex-col">
-                        <div className="p-6">
-                            <div className="flex items-center gap-2 mb-3">
-                                <Monitor className="w-5 h-5 text-blue-600" />
-                                <h3 className="text-lg font-bold text-gray-900">Corrugated Boxes</h3>
-                            </div>
-                            <p className="text-gray-500 text-sm leading-relaxed">
-                                Heavy-duty transport infrastructure. Engineered for optimal stacking
-                                strength (BCT) and global supply chain resilience.
-                            </p>
-                        </div>
-                        {/* Fixed Aspect Ratio Image */}
-                        <div className="relative w-full aspect-[16/9] mx-auto px-6 pb-6">
-                            <div className="relative w-full h-full  overflow-hidden">
-                                <img
-                                    src={transport_box}
-                                    alt="Corrugated Boxes"
-                                    className="absolute inset-0 w-full h-full object-cover"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card 4 — Custom Packaging */}
-                    <div className="bg-white  border border-gray-200 shadow-sm p-6 flex flex-col justify-between">
-                        <div>
-                            <div className="flex items-center gap-2 mb-3">
-                                <Wrench className="w-5 h-5 text-blue-600" />
-                                <h3 className="text-lg font-bold text-gray-900">Custom Packaging</h3>
-                            </div>
-                            <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                                Bespoke structural engineering for specialized product dimensions,
-                                ensuring maximum protection and material efficiency.
-                            </p>
-                        </div>
-
-                        {/* Development Process */}
-                        <div className="bg-gray-50 border border-gray-200  p-4">
-                            <p className="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">
-                                Development Process
-                            </p>
-                            <div className="flex items-center justify-between gap-2">
-                                {[
-                                    { icon: <User className="w-5 h-5 text-gray-600" />, label: "CAD Design" },
-                                    { icon: <Cpu className="w-5 h-5 text-gray-600" />, label: "Prototyping" },
-                                    { icon: <BarChart2 className="w-5 h-5 text-gray-600" />, label: "Mass Prod." },
-                                ].map((step, index, arr) => (
-                                    <React.Fragment key={step.label}>
-                                        <div className="flex flex-col items-center gap-1 text-center">
-                                            <div className="bg-white border border-gray-200 p-2 shadow-sm">
-                                                {step.icon}
-                                            </div>
-                                            <span className="text-xs text-gray-600 font-medium">{step.label}</span>
-                                        </div>
-                                        {index < arr.length - 1 && (
-                                            <ArrowRight className="w-4 h-4 text-gray-400 flex-shrink-0" />
-                                        )}
-                                    </React.Fragment>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-
+                        );
+                    })}
                 </div>
             </section>
-        </>
-    );
-};
 
-export default ServicesPage;
+        </main>
+    );
+}
