@@ -21,7 +21,7 @@ const contactDetails = [
   {
     icon: <Mail className="w-5 h-5 text-blue-600" />,
     label: "Email",
-    lines: ["info@mappleprints.com", "sales@mappleprints.com"],
+    lines: ["info@mapleprints.com", "sales@mapleprints.com"],
   },
   {
     icon: <Clock className="w-5 h-5 text-blue-600" />,
@@ -33,21 +33,21 @@ const contactDetails = [
 const departments = [
   {
     title: "Sales & Quotes",
-    email: "sales@mappleprints.com",
+    email: "sales@mapleprints.com",
     phone: "+91 98765 43210",
     description:
       "For product pricing, bulk order inquiries, and custom packaging requirements.",
   },
   {
     title: "Quality & Compliance",
-    email: "quality@mappleprints.com",
+    email: "quality@mapleprints.com",
     phone: "+91 98765 43211",
     description:
       "ISO certifications, CoA requests, and compliance documentation queries.",
   },
   {
     title: "Logistics & Dispatch",
-    email: "logistics@mappleprints.com",
+    email: "logistics@mapleprints.com",
     phone: "+91 98765 43212",
     description:
       "Shipment tracking, delivery schedules, and supply chain coordination.",
@@ -100,9 +100,9 @@ const Contact = () => {
               channels.
             </p>
 
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 py-8">
               {contactDetails.map((item) => (
-                <div key={item.label} className="flex items-start gap-4">
+                <div key={item.label} className="flex items-center gap-3 py-2">
                   <div className="flex-shrink-0 w-10 h-10 bg-blue-50 border border-blue-100 flex items-center justify-center">
                     {item.icon}
                   </div>

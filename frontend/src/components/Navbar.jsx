@@ -5,10 +5,10 @@ import logo from '../assets/icons/mapple_logo.png'
 const NAV_LINKS = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
-    { label: "Products", href: "/products" },
     { label: "Services", href: "/services" },
-    { label: "Quality", href: "/quality" },
-    { label: "Contact", href: "/contact" },
+    { label: "Products", href: "/products" },
+    { label: "Facility", href: "/facility" },
+    { label: "Our Commitment", href: "/quality" },
 ];
 
 export default function Navbar() {
@@ -91,10 +91,10 @@ export default function Navbar() {
                 {/* ── CTA (desktop) ── */}
                 <div className="hidden md:block">
                     <a
-                        href="#quote"
+                        href="/contact"
                         className="inline-flex items-center justify-center h-10 px-6 text-sm font-semibold text-white bg-[#E09A00] rounded-sm shadow-md transition-all duration-200 hover:bg-[#c98700] hover:shadow-lg active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#E09A00]"
                     >
-                        Get Quote
+                        Contact
                     </a>
                 </div>
 

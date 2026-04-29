@@ -10,7 +10,7 @@ export default function About({
     heading = "Excellence in Packaging Since 2007",
     body = "For over 15 years, Mapple Prints has been helping businesses stand out with custom packaging that sells. Based in Rai, Haryana, we offer end-to-end packaging solutions—from design and prototyping to printing and production—ensuring seamless execution and on-time delivery.We believe packaging is the first tangible connection between a brand and its customer. That’s why we combine innovation, precision, and reliability to deliver packaging that not only protects your product but also enhances its shelf appeal.",
     badge = DEFAULT_BADGE,
-    cta = { label: "Read More About Us", href: "#about" },
+    cta = { label: "Read More About Us", href: "/about" },
     imageSrc = CEO,
     imageAlt = "Mapple Prints team reviewing packaging designs in a modern facility",
 }) {
@@ -37,6 +37,7 @@ export default function About({
                 ref={sectionRef}
                 aria-labelledby="about-heading"
                 className={`about-section w-full bg-white ${visible ? "about-visible" : ""}`}
+                id="about"
             >
                 <div className="mx-auto flex w-full max-w-[1200px] flex-col items-center gap-10 px-4 py-16 md:flex-row md:gap-14 md:px-6 md:py-20 lg:px-8 lg:py-24">
 

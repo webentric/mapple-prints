@@ -20,7 +20,7 @@ export default function Infrastructure({
     eyebrow = "Infrastructure",
     heading = "World-Class Infrastructure",
     body = "Our manufacturing process is backed by extensive infrastructure, integrating the latest printing technology with automated processes to ensure precision, scale, and speed.",
-    cta = { label: "Explore Facility", href: "#facility" },
+    cta = { label: "Explore Facility", href: "/facility" },
     imageSrc = industry,
     imageAlt = "Modern packaging manufacturing facility with machinery and stacked cartons",
     highlights = HIGHLIGHTS,

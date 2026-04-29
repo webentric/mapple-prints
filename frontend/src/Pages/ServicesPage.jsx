@@ -79,16 +79,16 @@ export default function ServicesPage() {
                             <div
                                 key={index}
                                 className={[
-                                    "grid grid-cols-1 lg:grid-cols-2 gap-14 items-center",
+                                    "grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-14 items-center",
                                     index !== services.length - 1 ? "mb-24" : "",
                                 ].join(" ")}
                             >
                                 {/* Image */}
-                                <div className={isReverse ? "lg:order-2" : "lg:order-1"}>
+                                <div className={isReverse ? "lg:order-2" : "lg:order-1"} >
                                     <img
                                         src={service.image}
                                         alt={service.title}
-                                        className="w-full h-[360px] object-cover block"
+                                        className="w-full lg:w-3/4 h-auto object-cover block border border-gray-300"
                                     />
                                 </div>
 

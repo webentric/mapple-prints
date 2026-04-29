@@ -29,8 +29,8 @@ export default function HeroSection({
     eyebrow = "Custom Packaging Solutions That Sell Your Product",
     heading = "Manufacturing Excellence",
     body = "Maple Prints delivers high-quality mono cartons and paper-based packaging solutions designed for performance and visual impact. With end-to-end capabilities—from printing to finishing—we ensure precision, consistency, and reliable delivery for brands across industries.",
-    primaryCta = { label: "Request a Quote", href: "#quote" },
-    secondaryCta = { label: "View Infrastructure", href: "#infrastructure" },
+    primaryCta = { label: "Request a Quote", href: "/contact" },
+    secondaryCta = { label: "View Infrastructure", href: "/facility" },
     slides = DEFAULT_SLIDES,
     autoPlayMs = 4000,
 }) {

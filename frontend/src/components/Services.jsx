@@ -32,7 +32,7 @@ const CAPABILITIES = [
 export default function Services({
     heading = "Our Capabilities",
     subheading = "Comprehensive packaging solutions tailored to meet the rigorous demands of modern supply chains.",
-    cta = { label: "View All Services", href: "#services" },
+    cta = { label: "View All Services", href: "/services" },
     items = CAPABILITIES,
 }) {
     const sectionRef = useRef(null);
@@ -54,6 +54,7 @@ export default function Services({
             ref={sectionRef}
             aria-labelledby="cap-heading"
             className="w-full bg-[#eef1f8] px-4 py-16 md:px-6 md:py-20 lg:px-8 lg:py-24"
+            id="services"
         >
             {/* ── Header ── */}
             <div className="mx-auto mb-12 max-w-[680px] text-center">

@@ -42,6 +42,7 @@ export default function Clients({
             <section
                 aria-labelledby="brands-heading"
                 className="w-full bg-white px-4 py-16 md:px-6 md:py-20 lg:py-24"
+                id="clients"
             >
                 {/* ── Heading ── */}
                 <div className="mx-auto mb-10 max-w-[800px] text-center">

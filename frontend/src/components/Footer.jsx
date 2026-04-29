@@ -1,18 +1,18 @@
 import { useEffect, useRef, useState } from "react";
+import logo from '../assets/icons/mapple_logo.png';
 
 const QUICK_LINKS = [
-    { label: "Home", href: "#home" },
+    { label: "Home", href: "/" },
     { label: "About Us", href: "#about" },
     { label: "Industries", href: "#industries" },
     { label: "Services", href: "#services" },
     { label: "Infrastructure", href: "#facility" },
     { label: "Clients", href: "#clients" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/contact" },
 ];
 
 const INDUSTRIES = [
     { label: "Pharmaceuticals", href: "#pharma" },
-    { label: "FMCG", href: "#fmcg" },
     { label: "Cosmetics", href: "#cosmetics" },
     { label: "Food & Confectionery", href: "#food" },
     { label: "Agarbatti & Religious", href: "#agarbatti" },
@@ -22,7 +22,7 @@ const INDUSTRIES = [
 const CONTACT = {
     address: "Plot No. 2173, HSIIDC Industrial Estate, Rai, Sonipat (Haryana), India",
     phone: "+91 9810152101, 9212540800",
-    email: "info@mappleprints.com",
+    email: "info@mapleprints.com",
     hours: "Mon-Sat: 9:00 AM - 6:00 PM",
 };
 
@@ -91,7 +91,7 @@ function ClockIcon() {
 }
 
 export default function Footer({
-    companyName = "Mapple Prints",
+    companyName = "Maple Prints",
     description = "Delivering premium packaging solutions with precision, reliability, and modern manufacturing capabilities.",
     quickLinks = QUICK_LINKS,
     industries = INDUSTRIES,
@@ -134,8 +134,8 @@ export default function Footer({
                             className="inline-flex items-center gap-3 outline-none focus-visible:ring-2 focus-visible:ring-[#f0a500] focus-visible:ring-offset-2 focus-visible:ring-offset-[#08111f]"
                             style={{ borderRadius: 0 }}
                         >
-                            <span className="flex h-10 w-10 items-center justify-center bg-[#1b3a8f]" style={{ borderRadius: 0 }}>
-                                <LogoMark />
+                            <span className="flex h-10 w-10 items-center justify-center " style={{ borderRadius: 0 }}>
+                                <img src={logo} alt="" className="w-11 md:w-13" />
                             </span>
                             <span className="text-xl font-black tracking-tight text-white">
                                 {companyName}

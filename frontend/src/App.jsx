@@ -9,11 +9,14 @@ import Contact from "./Pages/Contact.jsx"
 import AboutPage from "./Pages/AboutPage.jsx"
 import Products from "./Pages/Products.jsx"
 import Quality from "./Pages/Quality.jsx"
+import FacilityPage from "./Pages/FacilityPage.jsx"
+import ScrollToTop from "./utils/ScrollToTop.jsx"
 
 function App() {
 
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -22,6 +25,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/quality" element={<Quality />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/facility" element={<FacilityPage />} />
       </Routes>
       <Footer />
     </>
