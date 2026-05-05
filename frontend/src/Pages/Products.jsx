@@ -8,15 +8,27 @@ import cosmetic_1 from '../assets/images/Products/cosmetic-1.png'
 import cosmetic_2 from '../assets/images/Products/cosmetic-2.png'
 import cosmetic_3 from '../assets/images/Products/cosmetic-3.png'
 import cosmetic_4 from '../assets/images/Products/cosmetic-4.png'
+import cosmetic_5 from '../assets/images/Products/cosmetic-5.png'
 import electronics_1 from '../assets/images/Products/electric-1.png'
 import food_1 from '../assets/images/Products/food-1.png'
 import food_2 from '../assets/images/Products/food-2.png'
+import food_3 from '../assets/images/Products/food-3.png'
+import food_4 from '../assets/images/Products/food-4.png'
 import nutraceuticals_1 from '../assets/images/Products/nutra-1.png'
+import nutraceuticals_2 from '../assets/images/Products/nutra-2.png'
+import nutraceuticals_3 from '../assets/images/Products/nutra-3.png'
+import nutraceuticals_4 from '../assets/images/Products/nutra-4.png'
+import nutraceuticals_5 from '../assets/images/Products/nutra-5.png'
+import nutraceuticals_6 from '../assets/images/Products/nutra-6.png'
+import nutraceuticals_7 from '../assets/images/Products/nutra-7.png'
 import pharmaceuticals_1 from '../assets/images/Products/pharma-1.png'
 import pharmaceuticals_2 from '../assets/images/Products/pharma-2.png'
 import pharmaceuticals_3 from '../assets/images/Products/pharma-3.png'
 import pharmaceuticals_4 from '../assets/images/Products/pharma-4.png'
 import pharmaceuticals_5 from '../assets/images/Products/pharma-5.png'
+import pharmaceuticals_6 from '../assets/images/Products/pharma-6.png'
+import pharmaceuticals_7 from '../assets/images/Products/pharma-7.png'
+import pharmaceuticals_8 from '../assets/images/Products/pharma-8.png'
 
 // ── Data ──────────────────────────────────────────────────────────────
 const categories = [
@@ -27,10 +39,10 @@ const categories = [
     "Pharmaceuticals",
     "Nutraceuticals",
     "Food"
-
 ];
 
-const products = [
+export const products = [
+    // AYURVEDIC
     {
         id: 1,
         name: "Ero Gold Pro",
@@ -67,18 +79,20 @@ const products = [
         category: "Ayurvedic",
         image: ayurvedic_4,
         specs: [
-            { label: "Material", value: "Wet-strength Kraft" },
-            { label: "Finish", value: "UV Coating, Foil Stamping" },
+            { label: "Material", value: "Kraft Board" },
+            { label: "Finish", value: "UV / Foil" },
         ],
     },
+
+    // COSMETICS
     {
         id: 5,
         name: "DermEase - Collagen",
         category: "Cosmetics",
         image: cosmetic_1,
         specs: [
-            { label: "Wall", value: "Double/Triple Wall" },
-            { label: "Capacity", value: "Up to 2000 lbs" },
+            { label: "Finish", value: "Matte Lamination" },
+            { label: "Type", value: "Folding Carton" },
         ],
     },
     {
@@ -87,8 +101,8 @@ const products = [
         category: "Cosmetics",
         image: cosmetic_2,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Print", value: "CMYK + Spot UV" },
+            { label: "Material", value: "Duplex Board" },
         ],
     },
     {
@@ -97,8 +111,8 @@ const products = [
         category: "Cosmetics",
         image: cosmetic_3,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Finish", value: "Gloss + Foil" },
+            { label: "Type", value: "Premium Carton" },
         ],
     },
     {
@@ -107,98 +121,226 @@ const products = [
         category: "Cosmetics",
         image: cosmetic_4,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Finish", value: "Matte + Emboss" },
+            { label: "Type", value: "Luxury Carton" },
         ],
     },
     {
         id: 9,
+        name: "Charcoal Face Wash",
+        category: "Cosmetics",
+        image: cosmetic_5,
+        specs: [
+            { label: "Finish", value: "Gloss Lamination" },
+            { label: "Type", value: "Retail Packaging" },
+        ],
+    },
+
+    // ELECTRONICS
+    {
+        id: 10,
         name: "Newow LED",
         category: "Electronics",
         image: electronics_1,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Material", value: "Corrugated Board" },
+            { label: "Strength", value: "High Impact" },
         ],
     },
+
+    // FOOD
     {
-        id: 10,
-        name: "Yahi Chahiye - Anjeer",
+        id: 11,
+        name: "Anjeer Pack",
         category: "Food",
         image: food_1,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
-        ],
-    },
-    {
-        id: 11,
-        name: "DermEase - Coconut Water",
-        category: "Food",
-        image: food_2,
-        specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Material", value: "Food Grade Board" },
+            { label: "Finish", value: "Matte" },
         ],
     },
     {
         id: 12,
-        name: "OnePro - Elecrolyte Drink",
-        category: "Nutraceuticals",
-        image: nutraceuticals_1,
+        name: "Coconut Water",
+        category: "Food",
+        image: food_2,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Coating", value: "Moisture Resistant" },
+            { label: "Type", value: "Retail Carton" },
         ],
     },
     {
         id: 13,
-        name: "Femifast-Ultra",
-        category: "Pharmaceuticals",
-        image: pharmaceuticals_1,
+        name: "Takeaway Box",
+        category: "Food",
+        image: food_3,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Usage", value: "Takeaway" },
+            { label: "Material", value: "Kraft" },
         ],
     },
     {
         id: 14,
-        name: "Acklofen Plus",
-        category: "Pharmaceuticals",
-        image: pharmaceuticals_2,
+        name: "Food Tray",
+        category: "Food",
+        image: food_4,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Type", value: "Disposable" },
+            { label: "Feature", value: "Leak Resistant" },
         ],
     },
+
+    // NUTRACEUTICALS
     {
         id: 15,
-        name: "ANCEF",
-        category: "Pharmaceuticals",
-        image: pharmaceuticals_3,
+        name: "Hydractive",
+        category: "Nutraceuticals",
+        image: nutraceuticals_1,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Finish", value: "Gloss" },
+            { label: "Type", value: "Bottle Carton" },
         ],
     },
     {
         id: 16,
-        name: "Dapoxilar-30",
-        category: "Pharmaceuticals",
-        image: pharmaceuticals_4,
+        name: "Herbal Drops",
+        category: "Nutraceuticals",
+        image: nutraceuticals_2,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Finish", value: "Matte" },
+            { label: "Type", value: "Dropper Box" },
         ],
     },
     {
         id: 17,
+        name: "Vitamin Syrup",
+        category: "Nutraceuticals",
+        image: nutraceuticals_3,
+        specs: [
+            { label: "Material", value: "Duplex" },
+            { label: "Print", value: "4 Color" },
+        ],
+    },
+    {
+        id: 18,
+        name: "Zyme Syrup",
+        category: "Nutraceuticals",
+        image: nutraceuticals_4,
+        specs: [
+            { label: "Finish", value: "Gloss" },
+            { label: "Type", value: "Retail Box" },
+        ],
+    },
+    {
+        id: 19,
+        name: "Oudaily",
+        category: "Nutraceuticals",
+        image: nutraceuticals_5,
+        specs: [
+            { label: "Finish", value: "Matte + UV" },
+            { label: "Type", value: "Tablet Carton" },
+        ],
+    },
+    {
+        id: 20,
+        name: "ORS Pack",
+        category: "Nutraceuticals",
+        image: nutraceuticals_6,
+        specs: [
+            { label: "Material", value: "Kraft" },
+            { label: "Use", value: "Hydration" },
+        ],
+    },
+    {
+        id: 21,
+        name: "ORS Bulk",
+        category: "Nutraceuticals",
+        image: nutraceuticals_7,
+        specs: [
+            { label: "Strength", value: "High Load" },
+            { label: "Type", value: "Bulk Pack" },
+        ],
+    },
+
+    // PHARMA
+    {
+        id: 22,
+        name: "Femifast-Ultra",
+        category: "Pharmaceuticals",
+        image: pharmaceuticals_1,
+        specs: [
+            { label: "Compliance", value: "cGMP" },
+            { label: "Feature", value: "Braille" },
+        ],
+    },
+    {
+        id: 23,
+        name: "Acklofen Plus",
+        category: "Pharmaceuticals",
+        image: pharmaceuticals_2,
+        specs: [
+            { label: "Print", value: "High Precision" },
+            { label: "Material", value: "Duplex" },
+        ],
+    },
+    {
+        id: 24,
+        name: "ANCEF",
+        category: "Pharmaceuticals",
+        image: pharmaceuticals_3,
+        specs: [
+            { label: "Compliance", value: "ISO" },
+            { label: "Feature", value: "Tamper Proof" },
+        ],
+    },
+    {
+        id: 25,
+        name: "Dapoxilar-30",
+        category: "Pharmaceuticals",
+        image: pharmaceuticals_4,
+        specs: [
+            { label: "Finish", value: "Matte" },
+            { label: "Type", value: "Tablet Carton" },
+        ],
+    },
+    {
+        id: 26,
         name: "Glencyper Plus",
         category: "Pharmaceuticals",
         image: pharmaceuticals_5,
         specs: [
-            { label: "Substrate", value: "BOPP, PET, Paper" },
-            { label: "Adhesive", value: "Permanent, Removable" },
+            { label: "Finish", value: "Gloss" },
+            { label: "Type", value: "Medical Box" },
+        ],
+    },
+    {
+        id: 27,
+        name: "Pharma Pack 6",
+        category: "Pharmaceuticals",
+        image: pharmaceuticals_6,
+        specs: [
+            { label: "Material", value: "Duplex" },
+            { label: "Feature", value: "Braille" },
+        ],
+    },
+    {
+        id: 28,
+        name: "Pharma Pack 7",
+        category: "Pharmaceuticals",
+        image: pharmaceuticals_7,
+        specs: [
+            { label: "Print", value: "High Quality" },
+            { label: "Feature", value: "Tamper Seal" },
+        ],
+    },
+    {
+        id: 29,
+        name: "Pharma Pack 8",
+        category: "Pharmaceuticals",
+        image: pharmaceuticals_8,
+        specs: [
+            { label: "Type", value: "Medical Packaging" },
+            { label: "Finish", value: "Matte" },
         ],
     },
 ];
@@ -233,7 +375,7 @@ const ProductCard = ({ product }) => (
 
             {/* CTA */}
             <button className="w-full border border-blue-600 text-blue-600 text-xs font-semibold uppercase tracking-wider py-2 px-4 hover:bg-blue-600 hover:text-white transition-colors duration-200">
-                <a href="/contact">Request Quote</a>
+                <a href="https://wa.me/9810152101">Request Quote</a>
             </button>
         </div>
     </div>

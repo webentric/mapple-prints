@@ -68,23 +68,6 @@ export default function About({
                             {body}
                         </p>
 
-                        {/* Badge */}
-                        <div
-                            className="mb-8 inline-flex items-center gap-3 border border-[#e2e8f0] bg-white px-4 py-3 shadow-[0_2px_8px_rgba(27,58,143,0.07)]"
-                            style={{ borderRadius: 0, maxWidth: "fit-content" }}
-                        >
-                            {/* Amber hexagon / badge icon */}
-                            <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center bg-[#f0a500]" style={{ borderRadius: 0 }}>
-                                <BadgeIcon />
-                            </span>
-                            <span
-                                className="font-bold text-[#1b3a8f]"
-                                style={{ fontSize: "clamp(0.8rem, 1.3vw, 0.9rem)" }}
-                            >
-                                {badge.label}
-                            </span>
-                        </div>
-
                         {/* CTA */}
                         <div>
                             <a

@@ -1,5 +1,4 @@
 import React from "react";
-import about_hero_bg from '../assets/images/about-hero.png'
 import team from '../assets/images/team.jpg'
 import CEO from '../assets/images/CEO.jpeg'
 
@@ -33,17 +32,15 @@ const AboutPage = () => {
         <main className="bg-white">
 
             {/* ── Hero Banner ── */}
-            <section className="relative w-full h-100 md:h-80 lg:h-[520px] overflow-hidden">
-
-                {/* Background Image */}
-                <img
-                    src={about_hero_bg}
-                    alt="Industrial Background"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
+            <section className="relative w-full h-120 md:h-80 lg:h-[520px] overflow-hidden">
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-[#0b1f3a]/70" />
+                <div className="absolute inset-0 bg-[#0b1f3a]/70"
+                    style={{
+                        background: "linear-gradient(160deg, #05122B 0%, #0A1A3A 50%, #060D1F 100%)",
+
+                    }}
+                />
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col justify-center h-full px-6 md:px-16 lg:px-24 max-w-6xl mx-auto">

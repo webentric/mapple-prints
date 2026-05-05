@@ -45,22 +45,19 @@ const Quality = () => {
         <main className="bg-white">
 
             {/* ── Hero Banner ── */}
-            <section className="relative w-full min-h-[360px] md:min-h-[420px] overflow-hidden md:px-40">
-                {/* Background Image */}
-                <img
-                    src={hero}
-                    alt="Quality Control Background"
-                    className="absolute inset-0 w-full h-full object-cover"
-                />
+            <section className="relative flex flex-col items-center w-full min-h-[360px] md:min-h-[420px] overflow-hidden md:px-40 pt-10">
+
                 {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-blue-950/75"></div>
+                <div className="absolute inset-0 bg-blue-950/75" style={{
+                    background: "linear-gradient(160deg, #05122B 0%, #0A1A3A 50%, #060D1F 100%)",
+                }}></div>
 
                 {/* Content */}
                 <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-16 lg:px-24 py-20 max-w-5xl">
 
                     {/* Eyebrow Badge */}
                     <div className="mb-5">
-                        <span className="inline-block bg-white/10 border border-white/20 text-white text-xs font-semibold uppercase tracking-widest px-3 py-1.5">
+                        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#E09A00] mb-3">
                             Quality Assurance
                         </span>
                     </div>
@@ -79,14 +76,14 @@ const Quality = () => {
                     </p>
 
                     {/* CTA Buttons */}
-                    <div className="flex flex-wrap gap-3">
+                    {/* <div className="flex flex-wrap gap-3">
                         <button className="bg-yellow-400 hover:bg-yellow-300 text-gray-900 text-xs font-bold uppercase tracking-wider px-6 py-3 transition-colors duration-200">
                             View Certifications
                         </button>
                         <button className="border border-white text-white text-xs font-bold uppercase tracking-wider px-6 py-3 hover:bg-white hover:text-gray-900 transition-colors duration-200">
                             Our Standards
                         </button>
-                    </div>
+                    </div> */}
 
                 </div>
             </section>

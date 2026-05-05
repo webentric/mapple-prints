@@ -1,254 +1,219 @@
-import { useEffect, useRef, useState } from "react";
-import agarbatti from '../assets/images/agarbatti-package.jpg'
-import ayurvedic from '../assets/images/Products/ayurvedic-1.png'
-import cosmetics from '../assets/images/Products/cosmetic-1.png'
-import electronics from '../assets/images/Products/electric-1.png'
-import food from '../assets/images/Products/food-1.png'
-import medicine from '../assets/images/Products/pharma-1.png'
+// Industries.jsx
+import { useRef } from "react";
+
+import agarbatti from '../assets/images/agarbatti-package.jpg';
+import ayurvedic from '../assets/images/Products/grouped-ayurvedic-1.png';
+import cosmetics from '../assets/images/Products/grouped-cosmetic-1.png';
+import electronics from '../assets/images/Products/electric-1.png';
+import food from '../assets/images/Products/food-3.png';
+import medicine from '../assets/images/Products/pharma-1.png';
 
 const INDUSTRIES = [
-    {
-        id: "pharma",
-        title: "Pharma",
-        desc: "Packaging for regulated pharmaceutical products",
-        icon: <PharmaIcon />,
-        href: "#pharma",
-        featured: true,
-        image: medicine,
-    },
-    {
-        id: "cosmetics",
-        title: "Cosmetics",
-        desc: "Premium packaging for beauty brands",
-        icon: <CosmeticsIcon />,
-        href: "#cosmetics",
-        image:
-            cosmetics,
-    },
-    {
-        id: "food",
-        title: "Food",
-        desc: "Packaging for confectionery and food products",
-        icon: <FoodIcon />,
-        href: "#food",
-        image:
-            food,
-    },
-    {
-        id: "ayurvedic",
-        title: "Ayurvedic",
-        desc: "Natural-product packaging with a premium finish",
-        icon: <AyurvedicIcon />,
-        href: "#ayurvedic",
-        image:
-            ayurvedic,
-    },
-    {
-        id: "agarbatti",
-        title: "Agarbatti",
-        desc: "Boxes for incense and spiritual packaging",
-        icon: <AgarbattiIcon />,
-        href: "#agarbatti",
-        image:
-            agarbatti,
-    },
-    {
-        id: "electronics",
-        title: "Electronics",
-        desc: "Durable packaging for devices and accessories",
-        icon: <ElectronicsIcon />,
-        href: "#electronics",
-        image:
-            electronics,
-    },
+  {
+    id: "pharma",
+    tags: ["RESEARCH REPORT", "HEALTHCARE"],
+    title: "Pharmaceutical Packaging",
+    desc: "Regulatory-compliant, tamper-evident packaging designed for safety and global standards.",
+    image: medicine,
+  },
+  {
+    id: "cosmetics",
+    tags: ["WHITEPAPER", "BEAUTY"],
+    title: "Cosmetics Packaging",
+    desc: "Premium packaging solutions crafted to enhance brand appeal and shelf presence.",
+    image: cosmetics,
+  },
+  {
+    id: "food",
+    tags: ["RESEARCH REPORT", "FOOD & BEVERAGE"],
+    title: "Food & Beverage Packaging",
+    desc: "High-barrier, food-safe packaging that preserves freshness and ensures quality.",
+    image: food,
+  },
+  {
+    id: "ayurvedic",
+    tags: ["WHITEPAPER", "WELLNESS"],
+    title: "Ayurvedic Packaging",
+    desc: "Nature-inspired packaging solutions for herbal and wellness product lines.",
+    image: ayurvedic,
+  },
+  {
+    id: "agarbatti",
+    tags: ["BLOG"],
+    title: "Agarbatti Packaging",
+    desc: "Elegant packaging crafted for incense and devotional product lines.",
+    image: agarbatti,
+  },
+  {
+    id: "electronics",
+    tags: ["BLOG"],
+    title: "Electronics Packaging",
+    desc: "Durable, protective packaging engineered for devices and electronic accessories.",
+    image: electronics,
+  },
 ];
 
-function PharmaIcon() {
-    return (
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect x="10" y="2" width="12" height="6" stroke="currentColor" strokeWidth="2" />
-            <rect x="4" y="8" width="24" height="22" stroke="currentColor" strokeWidth="2" />
-            <line x1="16" y1="14" x2="16" y2="24" stroke="currentColor" strokeWidth="2" />
-            <line x1="11" y1="19" x2="21" y2="19" stroke="currentColor" strokeWidth="2" />
-        </svg>
-    );
-}
-function FmcgIcon() {
-    return (
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <path d="M3 8h26l-3 16H6L3 8z" stroke="currentColor" strokeWidth="2" />
-            <path d="M3 8l3-5h20l3 5" stroke="currentColor" strokeWidth="2" />
-            <circle cx="11" cy="28" r="2" fill="currentColor" />
-            <circle cx="22" cy="28" r="2" fill="currentColor" />
-            <line x1="12" y1="14" x2="20" y2="14" stroke="currentColor" strokeWidth="2" />
-        </svg>
-    );
-}
-function CosmeticsIcon() {
-    return (
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="2" />
-            <circle cx="16" cy="16" r="4" stroke="currentColor" strokeWidth="2" />
-            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" strokeWidth="2" />
-            <line x1="16" y1="26" x2="16" y2="30" stroke="currentColor" strokeWidth="2" />
-            <line x1="2" y1="16" x2="6" y2="16" stroke="currentColor" strokeWidth="2" />
-            <line x1="26" y1="16" x2="30" y2="16" stroke="currentColor" strokeWidth="2" />
-        </svg>
-    );
-}
-function FoodIcon() {
-    return (
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <line x1="10" y1="4" x2="10" y2="28" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
-            <path d="M6 4h8v10a4 4 0 01-8 0V4z" stroke="currentColor" strokeWidth="2" />
-            <line x1="22" y1="4" x2="22" y2="28" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
-            <path d="M18 4c0 0 8 2 8 8s-8 8-8 8" stroke="currentColor" strokeWidth="2" />
-        </svg>
-    );
-}
-function AyurvedicIcon() {
-    return (
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <path d="M16 4C8 4 4 10 4 16s4 10 12 14c8-4 12-8 12-14S24 4 16 4z" stroke="currentColor" strokeWidth="2" />
-            <path d="M16 10v12M10 16h12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square" />
-        </svg>
-    );
-}
-function AgarbattiIcon() {
-    return (
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <line x1="16" y1="28" x2="16" y2="8" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
-            <path d="M16 8 Q12 4 14 2 Q16 4 16 8" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            <path d="M16 8 Q20 4 18 2 Q16 4 16 8" stroke="currentColor" strokeWidth="1.5" fill="none" />
-            <rect x="8" y="28" width="16" height="3" stroke="currentColor" strokeWidth="2" />
-        </svg>
-    );
-}
-function ElectronicsIcon() {
-    return (
-        <svg width="22" height="22" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-            <rect x="4" y="6" width="24" height="16" stroke="currentColor" strokeWidth="2" />
-            <line x1="4" y1="26" x2="28" y2="26" stroke="currentColor" strokeWidth="2" strokeLinecap="square" />
-            <line x1="12" y1="26" x2="12" y2="30" stroke="currentColor" strokeWidth="2" />
-            <line x1="20" y1="26" x2="20" y2="30" stroke="currentColor" strokeWidth="2" />
-            <circle cx="16" cy="14" r="3" stroke="currentColor" strokeWidth="1.8" />
-        </svg>
-    );
-}
+function IndustryCard({ item }) {
+  return (
+    <article className="relative overflow-hidden group cursor-pointer " style={{ aspectRatio: "1/1" }}>
+      {/* Image */}
+      <img
+        src={item.image}
+        alt={item.title}
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        style={{ filter: "brightness(0.9) contrast(1.05)" }}
+      />
 
-export default function Industries({
-    heading = "Industries We Serve",
-    subheading = "Delivering specialized packaging that meets strict regulatory and branding requirements across key sectors.",
-    cta = { label: "See More Industries", href: "#industries" },
-    industries = INDUSTRIES,
-}) {
-    const sectionRef = useRef(null);
-    const [visible, setVisible] = useState(false);
-    const [activeId, setActiveId] = useState(industries[0]?.id || "pharma");
+      {/* Gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(to top, rgba(10,25,47,0.92) 0%, rgba(10,25,47,0.55) 15%, rgba(10,25,47,0.15) 25%, rgba(10,25,47,0.0) 35%)",
+        }}
+      />
 
-    useEffect(() => {
-        const el = sectionRef.current;
-        if (!el) return;
-        const obs = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
-                setVisible(true);
-                obs.disconnect();
-            }
-        }, { threshold: 0.12 });
-        obs.observe(el);
-        return () => obs.disconnect();
-    }, []);
+      {/* Top Tags */}
+      {/* <div className="absolute top-0 left-0 right-0 p-4 flex flex-wrap items-center gap-1.5">
+        {item.tags.map((tag, i) => (
+          <span key={tag} className="flex items-center gap-1.5">
+            <span className="text-white text-[10px] font-semibold tracking-wider uppercase px-2 py-1 border border-white/20 bg-black/20 backdrop-blur-sm">
+              {tag}
+            </span>
+            {i < item.tags.length - 1 && (
+              <span className="text-white/40 text-[10px]">|</span>
+            )}
+          </span>
+        ))}
+      </div> */}
 
-    const active = industries.find((x) => x.id === activeId) || industries[0];
-
-    return (
-        <section
-            ref={sectionRef}
-            id="industries"
-            aria-labelledby="industries-heading"
-            className="w-full bg-gradient-to-b from-white to-[#eef1f8] px-4 py-20 md:px-6 md:py-24 lg:px-8 lg:py-28"
+      {/* Bottom Content */}
+      <div className="absolute bottom-0 left-0 right-0 p-5">
+        <h3 className="text-white text-[clamp(15px,1.6vw,19px)] font-bold leading-tight mb-1.5">
+          {item.title}
+        </h3>
+        <p className="text-white/65 text-[13px] leading-relaxed mb-3 line-clamp-2">
+          {item.desc}
+        </p>
+        {/* <a
+          href="#"
+          className="inline-flex items-center gap-1.5 text-[#F97316] text-[12px] font-semibold group-hover:gap-2.5 transition-all duration-200"
         >
+          Read More
+          <svg
+            className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.5}
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a> */}
+      </div>
 
-            <div className="mx-auto max-w-[1200px]">
-
-                <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                    <div className="max-w-[540px]">
-                        <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#f0a500]">
-                            Diverse Industry Expertise
-                        </p>
-                        <h2
-                            id="industries-heading"
-                            className="font-black uppercase leading-[1.05] tracking-tight text-[#1b3a8f]"
-                            style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)" }}
-                        >
-                            {heading}
-                        </h2>
-                        <p className="mt-4 max-w-[500px] text-[clamp(0.9rem,1.4vw,1rem)] leading-[1.75] text-[#4a5568]">
-                            {subheading}
-                        </p>
-                    </div>
-                    <div>
-                        <a
-                            href={cta.href}
-                            className="inline-flex h-[42px] items-center justify-center border border-[#1b3a8f] bg-transparent px-4 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1b3a8f] outline-none transition-all duration-300 hover:bg-[#1b3a8f] hover:text-white focus-visible:ring-2 focus-visible:ring-[#1b3a8f] focus-visible:ring-offset-2"
-                            style={{ borderRadius: 0 }}
-                        >
-                            {cta.label}
-                        </a>
-                    </div>
-                </div>
-
-                <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4">
-                    {industries.map((item, i) => (
-                        <IndustryCard
-                            key={item.id}
-                            {...item}
-                            active={activeId === item.id}
-                            featured={item.featured}
-                            visible={visible}
-                            delay={i * 70}
-                            onHover={() => setActiveId(item.id)}
-                        />
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+      {/* Hover tint */}
+      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 pointer-events-none" />
+    </article>
+  );
 }
 
-function IndustryCard({ icon, title, desc, image, active, featured, visible, delay, onHover }) {
-    return (
-        <article
-            tabIndex={0}
-            onMouseEnter={onHover}
-            onFocus={onHover}
-            className={`group relative overflow-hidden border bg-white p-5 text-left outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-[#1b3a8f] focus-visible:ring-offset-2 ${featured
-                ? "border-[#1b3a8f] shadow-[0_12px_30px_rgba(27,58,143,0.16)] scale-[1.03]"
-                : "border-[#e5e7eb] shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:-translate-y-1 hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]"
-                } ${active ? "ring-1 ring-[#f0a500]/30" : ""}`}
+export default function Industries() {
+  const sliderRef = useRef(null);
+
+  const scroll = (dir) => {
+    sliderRef.current?.scrollBy({
+      left: dir === "next" ? 320 : -320,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <section className="bg-[#F8F9FB] py-16 md:py-20 px-4 md:px-10">
+      <div className="max-w-[1280px] mx-auto">
+
+        {/* ── Header ── */}
+        <div className="mb-10 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div className="max-w-[540px]">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-[#f0a500]">
+              Diverse Industry Expertise
+            </p>
+            <h2
+              className="font-black uppercase leading-[1.05] tracking-tight text-[#1b3a8f]"
+              style={{ fontSize: "clamp(2rem, 4vw, 2.75rem)" }}
+            >
+              Industries We Serve
+            </h2>
+            <p className="mt-4 max-w-[500px] text-[clamp(0.9rem,1.4vw,1rem)] leading-[1.75] text-[#4a5568]">
+              Delivering specialized packaging across regulated and high-performance industries.
+            </p>
+          </div>
+          <div className="shrink-0 lg:mt-1">
+            <a
+              href="/industries"
+              className="inline-flex h-[42px] items-center justify-center border border-[#1b3a8f] bg-transparent px-5 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1b3a8f] outline-none transition-all duration-200 hover:bg-[#1b3a8f] hover:text-white focus-visible:ring-2 focus-visible:ring-[#1b3a8f] focus-visible:ring-offset-2"
+              style={{ borderRadius: 0 }}
+            >
+              See More Industries
+            </a>
+          </div>
+        </div>
+
+        {/* ── Desktop Grid — 3 columns, 2 rows, all equal ── */}
+        <div className="hidden md:grid grid-cols-3 gap-4">
+          {INDUSTRIES.map((item) => (
+            <IndustryCard key={item.id} item={item} />
+          ))}
+        </div>
+
+        {/* ── Mobile Slider ── */}
+        <div className="md:hidden">
+          <div
+            ref={sliderRef}
+            className="flex gap-4 overflow-x-auto snap-x snap-mandatory"
             style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(16px)",
-                transition: `opacity 520ms ease ${delay}ms, transform 520ms ease ${delay}ms`,
+              paddingLeft: "4px",
+              paddingRight: "48px",
+              paddingBottom: "8px",
+              scrollbarWidth: "none",
             }}
+          >
+            <style>{`::-webkit-scrollbar { display: none; }`}</style>
+            {INDUSTRIES.map((item) => (
+              <div
+                key={item.id}
+                className="snap-start shrink-0"
+                style={{ width: "78vw" }}
+              >
+                <IndustryCard item={item} />
+              </div>
+            ))}
+          </div>
+
+          
+          
+
+          {/* Slider Controls */}
+          <div className="flex justify-end gap-2 mt-4 pr-1">
+            <button
+          onClick={() => scroll("prev")}
+          aria-label="Previous slide"
+          className="w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-[#e8820c] border border-black/50 hover:border-[#e8820c] text-white text-base transition-all duration-200 hover:scale-105"
         >
-            <div className="relative mb-4 overflow-hidden">
-                <img
-                    src={image}
-                    alt={title}
-                    className="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1b3a8f]/20 via-transparent to-transparent" />
-            </div>
+          <span className='text-black/50'>←</span>
+        </button>
+        <button
+          onClick={() => scroll("next")}
+          aria-label="Next slide"
+          className="w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-[#e8820c] border border-black/50 hover:border-[#e8820c] text-white text-base transition-all duration-200 hover:scale-105"
+        >
+          <span className='text-black/50'>→</span>
+        </button>
+          </div>
+        </div>
 
-            {/* <div className="mb-4 flex h-12 w-12 items-center justify-center bg-[#1b3a8f]/10 text-[#1b3a8f] transition-colors duration-300 group-hover:bg-[#f0a500]/20 group-hover:text-[#f0a500]">
-                {icon}
-            </div> */}
-
-            <h3 className="text-sm font-bold text-[#1b3a8f] transition-colors duration-300 group-hover:text-[#f0a500]">
-                {title}
-            </h3>
-            <p className="mt-2 text-xs leading-5 text-[#6b7280]">{desc}</p>
-        </article>
-    );
+      </div>
+    </section>
+  );
 }

@@ -1,315 +1,256 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+// Hero.jsx
+import { useState, useEffect, useRef, useCallback } from "react";
+import hero_main from "../assets/images/Hero/hero-main.png"
+import hero_pharma from "../assets/images/Hero/hero-pharma.png"
+import hero_nutra from "../assets/images/Hero/hero-nutra.png"
+import hero_cosmetics from "../assets/images/Hero/hero-cosmetics.png"
+import hero_ayurvedic from "../assets/images/Hero/hero-ayurvedic.png"
+import hero_food from "../assets/images/Hero/hero-food.png"
+import hero_electronics from "../assets/images/Hero/hero-electronics.png"
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Link } from 'react-router-dom'
 
-import box_1 from '../assets/images/Products/cosmetic-2.png'
-import box_2 from '../assets/images/Products/electric-1.png'
-import box_3 from '../assets/images/Products/pharma-2.png'
-import box_4 from '../assets/images/Products/food-1.png'
-import hero_bg from '../assets/images/hero-bg.jpg'
 
-const DEFAULT_SLIDES = [
-    {
-        src: box_1,
-        alt: "Stack of custom packaging boxes manufactured by Maple Prints",
-    },
-    {
-        src: box_2,
-        alt: "Single custom-printed folding carton",
-    },
-    {
-        src: box_3,
-        alt: "High-volume label rolls off the press",
-    },
-    {
-        src: box_4,
-        alt: "Pharmaceutical blister packaging",
-    },
+const slides = [
+  {
+    id: 0,
+    title: "Manufacturing Excellence",
+    description:
+      "For over 20 years, Maple Prints has been delivering packaging that elevates products and strengthens brand presence. Based in Rai, Haryana, we provide end-to-end solutions—from design and prototyping to printing and production—with complete in-house control.",
+    image: hero_main,
+    cta: "Get Quote",
+  },
+  {
+    id: 1,
+    title: "Pharmaceutical Packaging Solutions",
+    description:
+      "High-precision packaging for pharmaceutical brands, ensuring regulatory compliance, product safety, and consistent brand integrity through advanced print and finishing systems.",
+    image: hero_pharma,
+    cta: "Get Quote",
+  },
+  {
+    id: 2,
+    title: "Nutraceutical Packaging",
+    description:
+      "Premium packaging solutions for nutraceutical brands, combining regulatory precision with strong shelf presence and scalable production for growing markets.",
+    image: hero_nutra,
+    cta: "Get Quote",
+  },
+  {
+    id: 3,
+    title: "Cosmetics & Beauty Packaging",
+    description:
+      "Luxury packaging crafted for beauty brands, featuring refined finishes, accurate color reproduction, and designs that enhance shelf appeal and brand perception.",
+    image: hero_cosmetics,
+    cta: "Get Quote",
+  },
+  {
+    id: 4,
+    title: "Ayurvedic Product Packaging",
+    description:
+      "Thoughtfully designed packaging for Ayurvedic brands, blending traditional aesthetics with modern printing technology for authenticity and market relevance.",
+    image: hero_ayurvedic,
+    cta: "Get Quote",
+  },
+  {
+    id: 5,
+    title: "Food Containers and Packaging",
+    description:
+      "Reliable, food-safe packaging solutions designed for freshness, durability, and strong visual impact across fast-moving consumer markets.",
+    image: hero_food,
+    cta: "Get Quote",
+  },
+  {
+    id: 6,
+    title: "Electronics Packaging",
+    description:
+      "Precision-built packaging for electronics, offering structural protection, clean design, and a premium unboxing experience for modern tech products.",
+    image: hero_electronics,
+    cta: "Get Quote",
+  },
 ];
 
-export default function HeroSection({
-    eyebrow = "Custom Packaging Solutions That Sell Your Product",
-    heading = "Manufacturing Excellence",
-    body = "Maple Prints delivers high-quality mono cartons and paper-based packaging solutions designed for performance and visual impact. With end-to-end capabilities—from printing to finishing—we ensure precision, consistency, and reliable delivery for brands across industries.",
-    primaryCta = { label: "Request a Quote", href: "/contact" },
-    secondaryCta = { label: "View Infrastructure", href: "/facility" },
-    slides = DEFAULT_SLIDES,
-    autoPlayMs = 4000,
-}) {
-    const [active, setActive] = useState(0);
-    const [loaded, setLoaded] = useState({});        // { [index]: true }
-    const [paused, setPaused] = useState(false);
-    const [dir, setDir] = useState("next");    // "next" | "prev" — drives slide direction
-    const timerRef = useRef(null);
-    const total = slides.length;
+export default function Hero() {
+  const [current, setCurrent] = useState(0);
+  const [animating, setAnimating] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const timerRef = useRef(null);
+  const total = slides.length;
 
-    /* ── Auto-play ── */
-    const scheduleNext = useCallback(() => {
-        clearTimeout(timerRef.current);
-        timerRef.current = setTimeout(() => {
-            if (!paused) {
-                setDir("next");
-                setActive((i) => (i + 1) % total);
-            }
-        }, autoPlayMs);
-    }, [paused, total, autoPlayMs]);
+  useEffect(() => {
+    AOS.init({ duration: 700, once: false, easing: "ease-out-cubic" });
+  }, []);
 
-    useEffect(() => {
-        scheduleNext();
-        return () => clearTimeout(timerRef.current);
-    }, [active, scheduleNext]);
+  // Re-trigger AOS on every slide change
+  useEffect(() => {
+    AOS.refresh();
+  }, [current]);
 
-    /* ── Navigation helpers ── */
-    const goTo = (index, direction = "next") => {
-        setDir(direction);
-        setActive(index);
-        clearTimeout(timerRef.current);
-        scheduleNext();
-    };
+  const goTo = useCallback(
+    (index) => {
+      if (animating) return;
+      setAnimating(true);
+      setTimeout(() => {
+        setCurrent(index);
+        setAnimating(false);
+      }, 450);
+    },
+    [animating]
+  );
 
-    const prev = () => goTo((active - 1 + total) % total, "prev");
-    const next = () => goTo((active + 1) % total, "next");
+  const next = useCallback(() => goTo((current + 1) % total), [current, total, goTo]);
+  const prev = useCallback(() => goTo((current - 1 + total) % total), [current, total, goTo]);
 
-    /* ── Keyboard on the slideshow ── */
-    const handleKey = (e) => {
-        if (e.key === "ArrowLeft") { e.preventDefault(); prev(); }
-        if (e.key === "ArrowRight") { e.preventDefault(); next(); }
-    };
+  // Auto-slide
+  useEffect(() => {
+    if (paused) return;
+    timerRef.current = setInterval(next, 5000);
+    return () => clearInterval(timerRef.current);
+  }, [paused, next]);
 
-    return (
-        <>
-            {/* Keyframe styles injected once */}
-            <style>{SLIDE_CSS}</style>
+  const formatIndex = (n) => String(n + 1).padStart(2, "0");
+  const slide = slides[current];
 
-            <section
-                aria-labelledby="hero-heading"
-                className="relative w-full h-auto overflow-visible bg-[#eef1f8]"
-                style={{
-                    backgroundImage: `url(${hero_bg})`,
-                }}
-            // 
-            >
-                <div className="absolute inset-0" style={{
-                    background: "linear-gradient(to right, white 40%, rgba(255,255,255,0.8) 80%, rgba(255,255,255,0) 100%)",
-                }} />
+  return (
+    <section
+      className="relative w-full h-[80vh] overflow-hidden select-none mt-4"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* ── Background Images (preload all, only active is visible) ── */}
+      {slides.map((s, i) => (
+        <div
+          key={s.id}
+          className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${i === current ? "opacity-100" : "opacity-0"
+            }`}
+        >
+          <img
+            src={s.image}
+            alt={s.title}
+            className="w-full h-full object-cover "
+            // style={{ filter: "blur(1px)" }}
+            loading={i === 0 ? "eager" : "lazy"}
+          />
+        </div>
+      ))}
 
-                <div className="mx-auto flex w-full max-w-[1400px] h-auto md:h-screen flex-col items-center gap-8 px-4 py-30 md:flex-row md:gap-12 md:px-6 md:py-20 lg:px-8 lg:py-24 " >
+      {/* ── Gradient Overlay ── */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background:
+            "rgba(13,33,55,0.80)",
+        }}
+      />
 
-                    {/* ── Left: Copy ── */}
-                    <div className="relative z-20 flex w-full flex-col md:w-1/2 lg:w-[52%]">
+      {/* ── Content ── */}
+      <div className="relative z-20 h-full flex flex-col justify-center px-6 sm:px-12 lg:px-90 ">
+        <div className="max-w-full">
 
-                        {/* Eyebrow */}
-                        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#1b3a8f]/80">
-                            {eyebrow}
-                        </p>
+          {/* Category label */}
+          <div
+            key={`label-${current}`}
+            data-aos="fade-down"
+            className="mb-4"
+          >
+            <span className="text-[#e8820c] text-sm md:text-md font-semibold tracking-[3px] uppercase">
+              Your Vision, Perfectly Packaged
+            </span>
+          </div>
 
-                        {/* Heading */}
-                        <h1
-                            id="hero-heading"
-                            className="mb-6 font-extrabold leading-[1.05] tracking-tight text-[#1b3a8f]"
-                            style={{ fontSize: "clamp(2.2rem, 4.8vw, 3.4rem)" }}
-                        >
-                            {heading}
-                        </h1>
+          {/* Heading */}
+          <h1
+            key={`title-${current}`}
+            data-aos="fade-up"
+            className={`text-white font-bold leading-[1.1] tracking-tight mb-5 transition-opacity duration-450 ${animating ? "opacity-0" : "opacity-100"
+              } text-[clamp(36px,4.5vw,65px)]`}
+          >
+            {slide.title}
+          </h1>
 
-                        {/* Body */}
-                        <p
-                            className="mb-8 text-[#374151]"
-                            style={{
-                                fontSize: "xs",
-                                maxWidth: "48ch",
-                                lineHeight: "1.50",
-                            }}
-                        >
-                            {body}
-                        </p>
+          {/* Description */}
+          <p
+            key={`desc-${current}`}
+            data-aos="fade-up"
+            data-aos-delay="150"
+            className={`text-white/80 text-[clamp(16px,1.5vw,20px)] leading-relaxed mb-9 max-w-[480px] transition-opacity duration-450 ${animating ? "opacity-0" : "opacity-100"
+              }`}
+          >
+            {slide.description}
+          </p>
 
-                        {/* Trust Signals (NEW - VERY IMPORTANT) */}
-                        <div className="mb-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-md font-semibold text-[#1b3a8f]/80">
-                            <span>✔ 15+ Years Experience</span>
-                            <span>✔ 100+ Clients</span>
-                            <span>✔ Pan India & Global Supply</span>
-                        </div>
+          {/* CTA Button */}
+          <div
+            key={`cta-${current}`}
+            data-aos="fade-up"
+            data-aos-delay="300"
+            className="flex flex-col md:flex-row gap-5"
+          >
+            <Link to='https://wa.me/9810152101'>
+              <button
+                className="group inline-flex items-center gap-3 border border-[#e8820c] bg-[#e8820c] hover:bg-[#cf7009] text-white text-[13px] font-semibold tracking-[2px] uppercase px-7 py-3.5 transition-all duration-200 hover:gap-4"
+              >
+                {slide.cta}
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              </button>
+            </Link>
+            <Link to='/services'>
+              <button
+                className="group inline-flex items-center gap-3 border border-[#e8820c] hover:bg-[#cf7009] hover:text-white text-[#e8820c] text-[13px] font-semibold tracking-[2px] uppercase px-7 py-3.5 transition-all duration-200 hover:gap-4"
+              >
+                Explore Services
+                <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
+              </button>
+            </Link>
 
-                        {/* CTA Buttons */}
-                        <div className="flex flex-wrap items-center gap-4">
+          </div>
+        </div>
+      </div>
 
-                            {/* Primary CTA */}
-                            <a
-                                href={primaryCta.href}
-                                className="inline-flex h-[48px] items-center justify-center bg-[#f0a500] px-7 text-[11px] font-bold uppercase tracking-[0.12em] text-white shadow-md transition-all duration-200 hover:bg-[#d4920a] hover:shadow-lg active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#f0a500] focus-visible:ring-offset-2"
-                            >
-                                {primaryCta.label}
-                            </a>
+      {/* ── Slide Counter — Bottom Left ── */}
+      <div className="absolute bottom-10 left-6 sm:left-12 lg:left-20 xl:left-28 z-20 flex items-center gap-2">
+        <span className="text-white text-sm font-semibold tracking-widest">
+          {formatIndex(current)}
+        </span>
+        <span className="text-white/30 text-sm tracking-widest">/</span>
+        <span className="text-white/40 text-sm tracking-widest">
+          {formatIndex(total - 1)}
+        </span>
+      </div>
 
-                            {/* Secondary CTA */}
-                            <a
-                                href={secondaryCta.href}
-                                className="hidden sm:inline-flex h-[48px] items-center justify-center border-2 border-[#1b3a8f] px-7 text-[11px] font-bold uppercase tracking-[0.12em] text-[#1b3a8f] transition-all duration-200 hover:bg-[#1b3a8f] hover:text-white active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-[#1b3a8f] focus-visible:ring-offset-2"
-                            >
-                                {secondaryCta.label}
-                            </a>
+      {/* ── Right Side: Vertical Indicators + Nav Buttons ── */}
+      <div className="absolute right-5 sm:right-8 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-3">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`transition-all duration-300 rounded-full ${i === current
+              ? "w-[3px] h-9 bg-[#e8820c]"
+              : "w-[2px] h-5 bg-white/25 hover:bg-white/50"
+              }`}
+          />
+        ))}
+      </div>
 
-                        </div>
-                    </div>
-
-                    {/* ── Right: Slideshow ── */}
-                    <div className="relative flex w-full flex-col items-center md:w-1/2 lg:w-[48%]">
-
-                        {/* Slide stage */}
-                        <div
-                            role="region"
-                            aria-label="Product image slideshow"
-                            aria-roledescription="carousel"
-                            tabIndex={0}
-                            onKeyDown={handleKey}
-                            onMouseEnter={() => setPaused(true)}
-                            onMouseLeave={() => setPaused(false)}
-                            onFocus={() => setPaused(true)}
-                            onBlur={() => setPaused(false)}
-                            className="relative w-full overflow-hidden bg-[#6b7280] outline-none focus-visible:ring-2 focus-visible:ring-[#1b3a8f] focus-visible:ring-offset-2"
-                            style={{ aspectRatio: "1/1", maxWidth: "460px", borderRadius: 0 }}
-                        >
-                            {slides.map((slide, i) => (
-                                <div
-                                    key={i}
-                                    aria-hidden={i !== active}
-                                    className="absolute inset-0"
-                                    style={{
-                                        animation:
-                                            i === active
-                                                ? `slide-in-${dir} 420ms cubic-bezier(0.16,1,0.3,1) both`
-                                                : "none",
-                                        zIndex: i === active ? 2 : 1,
-                                        opacity: i === active ? 1 : 0,
-                                    }}
-                                >
-                                    {/* Skeleton */}
-                                    {!loaded[i] && (
-                                        <div
-                                            aria-hidden="true"
-                                            className="absolute inset-0"
-                                            style={{ background: "#9ca3af", animation: "shimmer 1.5s ease-in-out infinite" }}
-                                        />
-                                    )}
-                                    <img
-                                        src={slide.src}
-                                        alt={slide.alt}
-                                        width={460}
-                                        height={460}
-                                        loading={i === 0 ? "eager" : "lazy"}
-                                        decoding="async"
-                                        onLoad={() => setLoaded((p) => ({ ...p, [i]: true }))}
-                                        className="h-full w-full object-cover"
-                                        style={{
-                                            borderRadius: 0,
-                                            opacity: loaded[i] ? 1 : 0,
-                                            transition: "opacity 400ms ease",
-                                        }}
-                                    />
-                                </div>
-                            ))}
-
-                            {/* Slide counter badge */}
-                            <div
-                                aria-live="polite"
-                                aria-atomic="true"
-                                className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-black/40 px-2 py-1"
-                                style={{ borderRadius: 0 }}
-                            >
-                                <span className="text-[11px] font-bold tabular-nums text-white">
-                                    {active + 1} / {total}
-                                </span>
-                            </div>
-
-                            {/* Prev arrow */}
-                            <button
-                                type="button"
-                                onClick={prev}
-                                aria-label="Previous image"
-                                className="absolute left-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-[#1b3a8f]/80 text-white outline-none transition-colors duration-150 hover:bg-[#1b3a8f] focus-visible:ring-2 focus-visible:ring-white"
-                                style={{ borderRadius: 0 }}
-                            >
-                                <ChevronLeft />
-                            </button>
-
-                            {/* Next arrow */}
-                            <button
-                                type="button"
-                                onClick={next}
-                                aria-label="Next image"
-                                className="absolute right-0 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center bg-[#1b3a8f]/80 text-white outline-none transition-colors duration-150 hover:bg-[#1b3a8f] focus-visible:ring-2 focus-visible:ring-white"
-                                style={{ borderRadius: 0 }}
-                            >
-                                <ChevronRight />
-                            </button>
-                        </div>
-
-                        {/* Dot indicators */}
-                        <div
-                            className="mt-3 flex items-center gap-2"
-                            role="tablist"
-                            aria-label="Slide indicators"
-                        >
-                            {slides.map((_, i) => (
-                                <button
-                                    key={i}
-                                    role="tab"
-                                    type="button"
-                                    aria-selected={i === active}
-                                    aria-label={`Go to slide ${i + 1}`}
-                                    onClick={() => goTo(i, i > active ? "next" : "prev")}
-                                    className="outline-none transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#1b3a8f] focus-visible:ring-offset-1"
-                                    style={{
-                                        borderRadius: 0,
-                                        width: i === active ? "24px" : "8px",
-                                        height: "8px",
-                                        background: i === active ? "#f0a500" : "#1b3a8f",
-                                        opacity: i === active ? 1 : 0.35,
-                                        border: "none",
-                                        cursor: "pointer",
-                                        transition: "width 250ms ease, background 200ms, opacity 200ms",
-                                    }}
-                                />
-                            ))}
-                        </div>
-
-                    </div>
-                </div>
-            </section >
-        </>
-    );
+      {/* ── Nav Buttons — Bottom Right ── */}
+      <div className="absolute bottom-8 right-5 sm:right-8 z-20 flex items-center gap-2">
+        <button
+          onClick={prev}
+          aria-label="Previous slide"
+          className="w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-[#e8820c] border border-white/20 hover:border-[#e8820c] text-white text-base transition-all duration-200 hover:scale-105"
+        >
+          ←
+        </button>
+        <button
+          onClick={next}
+          aria-label="Next slide"
+          className="w-10 h-10 flex items-center justify-center bg-white/10 hover:bg-[#e8820c] border border-white/20 hover:border-[#e8820c] text-white text-base transition-all duration-200 hover:scale-105"
+        >
+          →
+        </button>
+      </div>
+    </section>
+  );
 }
-
-/* ────────────────── Icon sub-components ────────────────── */
-function ChevronLeft() {
-    return (
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M11 4L6 9l5 5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square" strokeLinejoin="miter" />
-        </svg>
-    );
-}
-function ChevronRight() {
-    return (
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-            <path d="M7 4l5 5-5 5" stroke="currentColor" strokeWidth="2.2" strokeLinecap="square" strokeLinejoin="miter" />
-        </svg>
-    );
-}
-
-/* ────────────────── Keyframe CSS string ────────────────── */
-const SLIDE_CSS = `
-@keyframes slide-in-next {
-  from { transform: translateX(100%); opacity: 0; }
-  to   { transform: translateX(0);    opacity: 1; }
-}
-@keyframes slide-in-prev {
-  from { transform: translateX(-100%); opacity: 0; }
-  to   { transform: translateX(0);     opacity: 1; }
-}
-@keyframes shimmer {
-  0%   { background-position: -200% 0; }
-  100% { background-position:  200% 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  [style*="slide-in"] { animation: none !important; }
-}
-`;

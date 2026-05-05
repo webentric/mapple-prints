@@ -144,11 +144,12 @@ export default function Footer({
                         <p className="max-w-[360px] text-sm leading-7 text-white/70">
                             {description}
                         </p>
-                        <div className="flex items-center gap-3">
+                        {/* SOCIAL MEDIA LINKS  */}
+                        {/* <div className="flex items-center gap-3">
                             <SocialLink label="LinkedIn" href="#" icon={<LinkedInIcon />} />
                             <SocialLink label="Facebook" href="#" icon={<FacebookIcon />} />
                             <SocialLink label="Instagram" href="#" icon={<InstagramIcon />} />
-                        </div>
+                        </div> */}
                     </div>
 
                     <FooterColumn title="Quick Links" visible={visible} delay={80}>
